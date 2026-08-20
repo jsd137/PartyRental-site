@@ -22,7 +22,7 @@
   .meta { color: #777; font-size: 0.9em; }
   .tagline { color: #54637A; font-size: 1.05em; }
   a { color: #2C5591; }
-  ul { padding-left: 1.2em; }
+  ul, ol { padding-left: 1.2em; }
   li { margin: 0.35em 0; }
   nav { margin-bottom: 2em; font-size: 0.95em; }
   .contact {
@@ -37,55 +37,119 @@
 <h1>User guide</h1>
 <p class="meta">Party Rental for iOS</p>
 
-<h2>Start with your gear</h2>
-<p>The Assets tab is your warehouse on paper. Add each thing you rent: a
-count for things like chairs and tables, or numbered units for big-ticket
-items like inflatables and tents, so each one keeps its own damage history.
-Give each asset its rate (flat per rental, or per day), what it cost you, and
-its turnaround, the days it needs between rentals for cleaning and drying.</p>
+<p>Party Rental runs a small party rental business from your phone: the
+clients, the bookings on your calendar, the money, and the gear itself. The
+app has five tabs.</p>
+
+<ul>
+  <li><strong>Schedule</strong>: every delivery and pickup, day by day.</li>
+  <li><strong>Clients</strong>: who you rent to, with addresses and site details.</li>
+  <li><strong>Assets</strong>: your rental catalog.</li>
+  <li><strong>Money</strong>: charges, payments, expenses, and invoices.</li>
+  <li><strong>Settings</strong>: message templates, crew access, card payments, and export.</li>
+</ul>
+
+<h2>Set up your catalog</h2>
+<p>Everything you rent out lives on the Assets tab. An asset is one of two
+kinds. A <em>counted</em> asset is a quantity you own, which fits chairs,
+tables, and linens. A <em>serialized</em> asset gives every unit its own id
+and its own damage history, which fits inflatables and other big-ticket
+items.</p>
+<p>Each asset also carries:</p>
+<ul>
+  <li><strong>Rate</strong>: a flat price per rental, or a price per day of the rental's span.</li>
+  <li><strong>Rebooking buffer</strong>: the number of days after pickup before the asset can go out again, for drying and cleaning.</li>
+  <li><strong>Acquisition cost</strong>: what you paid for it. The app measures earnings against this figure.</li>
+</ul>
+<p>To add one:</p>
+<ol>
+  <li>Open the Assets tab and start a new asset.</li>
+  <li>Choose counted or serialized. For a counted asset, enter how many you own. For a serialized asset, add each unit with its own id.</li>
+  <li>Set the rate, flat or per day.</li>
+  <li>Enter the rebooking buffer in days.</li>
+  <li>Enter what the asset cost you.</li>
+</ol>
+<p>Open any asset later to see what it has earned against its cost, which of
+it is out right now, and its damage history.</p>
 
 <h2>Add your clients</h2>
-<p>On the Clients tab, add people by hand, pick them from Contacts, or import
-a CSV. Each client gets an address with access notes: the gate code, where to
-unload, where the power is. Those notes show up on the stop card on delivery
-day.</p>
+<p>The Clients tab holds the people you rent to. Add a client by hand, pull
+one in from Contacts, or import a CSV. A client record carries the address
+and the site details you want in hand on delivery day, such as the gate code
+and where to unload. Those details travel to the stop card when you book.</p>
 
 <h2>Book a rental</h2>
-<p>From the Schedule tab, Add booking. Pick the client, the delivery and
-pickup times, and the gear. Companions ride along automatically, and every
-line's price can be edited before you book. If something is already promised
-to another event that weekend, the app tells you exactly what and when, and
-booking over the warning requires a reason you write yourself.</p>
+<p>A booking pairs one client with a set of assets over a date range, and
+becomes two stops on the schedule: a delivery and a pickup.</p>
+<ol>
+  <li>On the Schedule tab, start a new booking.</li>
+  <li>Pick the client.</li>
+  <li>Set the delivery date and time, then the pickup date and time.</li>
+  <li>Add the assets as line items. Any line's price can be edited before you save.</li>
+  <li>Save the booking.</li>
+</ol>
+<p>If the dates collide with gear that is already promised, counting each
+asset's rebooking buffer, the app warns you before saving and names the
+booking in the way. To book over the warning, type a reason. The reason is
+saved with the booking.</p>
 
-<h2>Delivery day</h2>
-<p>The Schedule tab opens on today: your deliveries and pickups in order,
-with the address, the access notes, and a Directions button on each card.
-Completing the delivery is the money moment: the rental's charge lands on
-the client's balance, dated to that day. A Reminder button on each stop
-drafts the "we deliver tomorrow" text for you; you read it and send it from
-your own number.</p>
+<h2>Run the day</h2>
+<p>The Schedule tab opens on today, with the day's stops in the order you
+work them. Each stop card carries the address, the client's site details, and
+directions.</p>
+<ol>
+  <li>Open the Schedule tab.</li>
+  <li>Tap the stop you are working.</li>
+  <li>Complete the delivery once the gear is set up.</li>
+</ol>
+<p>Completing the delivery is the money moment. The booking's charge lands on
+the client's balance, dated to that day.</p>
 
-<h2>Pickup day</h2>
-<p>Completing the pickup counts the load back in. Every line starts at its
-full count; if something is short or damaged, turn the count down and write
-what happened. The note lands on that asset's history, and a fee line is
-offered, never assumed.</p>
+<h2>Check gear back in</h2>
+<p>Completing the pickup is check-in. Every line starts at the count that
+went out.</p>
+<ol>
+  <li>Open the pickup stop on the Schedule tab.</li>
+  <li>Count each asset back in. Turn the count down on any line that came back short.</li>
+  <li>Write a damage note where one is needed. On a serialized asset the note lands on that unit's history.</li>
+  <li>Add a fee line if you are charging for the shortfall or the damage. Fees are entered by hand at check-in.</li>
+  <li>Complete the pickup. Each asset's rebooking buffer starts running from this date.</li>
+</ol>
 
-<h2>Money</h2>
-<p>The Money tab is what you're owed and what you've earned: balances, aging,
-invoices, payments, tips, and your expenses. Invoices are PDFs generated on
-your device; send them however you like. If you connect Stripe, invoices can
-carry a pay link, and card money goes straight to your own Stripe account.</p>
+<h2>Get paid</h2>
+<p>The Money tab holds charges, payments, expenses, and invoices. Record a
+payment against a client's balance whenever it arrives. Build an invoice from
+what a client owes, send it, and mark it paid when the money lands.</p>
+<p>For card payments, connect your Stripe account in Settings. Clients then
+pay from a link, and the money goes to your own Stripe account. Recording
+cash and checks is free.</p>
 
-<h2>Crew (optional)</h2>
-<p>If people work your trucks, turn on crew in Settings. Each crew member
-signs into a simple web page with your join code, their name, and a PIN, and
-sees the day you assigned them: stops, addresses, and what to load. You
-choose what they can see; prices stay hidden unless you turn them on.</p>
+<h2>Reminders</h2>
+<p>Party Rental keeps message templates for delivery reminders, pickup
+reminders, and payment due. Edit the wording in Settings so the texts sound
+like you.</p>
+<ol>
+  <li>Open a booking, or open the run sheet for tomorrow's stops.</li>
+  <li>Choose the reminder you want to send.</li>
+  <li>The text opens in Messages with the client filled in. Read it and send it from your own number.</li>
+</ol>
 
-<h2>Every screen tells the truth</h2>
-<p>Empty screens say they're empty. Estimates say they're estimates. If a
-number could not be loaded, the screen says it could not check, instead of
-showing you a zero that isn't real.</p>
+<h2>Crew</h2>
+<p>The crew day view is a web page a helper opens on their phone, showing the
+stops for that day. Set it up in Settings.</p>
+<ol>
+  <li>In Settings, turn on crew access.</li>
+  <li>Add each helper.</li>
+  <li>Send them the link and their sign-in. They open it on their phone and see the day.</li>
+</ol>
+
+<h2>Your data</h2>
+<p>The app works with no signal. Everything you enter is written to the
+device as you enter it. When the device is signed into iCloud, your work
+syncs through your own iCloud account to your other devices, and Settings
+shows the current sync state.</p>
+<p>Settings also exports your clients, stops, and money as CSV files. The
+client file imports back into a fresh install. What the app stores, and
+where, is set out in the <a href="privacy.html">privacy policy</a>.</p>
 </body>
 </html>
